@@ -1,0 +1,29 @@
+package by.edu.lesson.entity;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+@Entity
+@Table(schema = "hibernate_fight", name = "room")
+public class Room {
+    @Id
+    @GeneratedValue(generator = "roomSq", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "roomSq", sequenceName = "room_sq", schema = "hibernate_fight", allocationSize = 1)
+    private Long id;
+
+    private String roomName;
+
+    private String identificationNumber;
+
+    private Long peopleLimit;
+
+    @Enumerated(EnumType.STRING)
+    private RoomStatus status;
+
+    private Double amountPerHour;
+}

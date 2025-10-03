@@ -14,6 +14,7 @@ public class HibernateConnection {
         Properties properties = new Properties();
         properties.put("jakarta.persistence.jdbc.user", System.getenv("postgres_usr"));
         properties.put("jakarta.persistence.jdbc.password", System.getenv("postgres_password"));
+
         factory = Persistence.createEntityManagerFactory("ClientJpa", properties);
     }
 

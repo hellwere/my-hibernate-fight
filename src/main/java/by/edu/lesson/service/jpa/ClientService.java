@@ -1,4 +1,4 @@
-package by.edu.lesson.service;
+package by.edu.lesson.service.jpa;
 
 import by.edu.lesson.entity.Client;
 import by.edu.lesson.entity.Status;

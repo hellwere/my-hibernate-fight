@@ -1,7 +1,7 @@
 package by.edu.lesson.repository.jpa;
 
 import by.edu.lesson.configuration.HibernateConnection;
-import by.edu.lesson.entity.Client;
+import by.edu.lesson.entity.client.Client;
 import by.edu.lesson.repository.ClientRepository;
 import jakarta.persistence.EntityManager;
 

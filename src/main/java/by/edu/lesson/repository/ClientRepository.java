@@ -1,6 +1,6 @@
 package by.edu.lesson.repository;
 
-import by.edu.lesson.entity.Client;
+import by.edu.lesson.entity.client.Client;
 
 import java.util.List;
 

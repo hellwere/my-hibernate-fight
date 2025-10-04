@@ -1,6 +1,7 @@
 package by.edu.lesson.service.hibernate;
 
-import by.edu.lesson.entity.Room;
+import by.edu.lesson.entity.room.Room;
+import by.edu.lesson.entity.room.SubselectRoom;
 import by.edu.lesson.repository.hibernate.RoomRepository;
 
 import java.util.ArrayList;
@@ -32,5 +33,9 @@ public class RoomService {
 
     public Room changeAmountPerHour(Room room, Double amount) {
         return repository.changeAmountPerHour(room, amount);
+    }
+
+    public List<SubselectRoom> getRoomWithMaxPeople() {
+        return repository.getRoomWithMaxPeople();
     }
 }

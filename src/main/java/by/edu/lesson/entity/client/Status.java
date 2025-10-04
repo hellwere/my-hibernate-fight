@@ -1,4 +1,4 @@
-package by.edu.lesson.entity;
+package by.edu.lesson.entity.client;
 
 public enum Status {
     ACTIVE("ACTIVE"),

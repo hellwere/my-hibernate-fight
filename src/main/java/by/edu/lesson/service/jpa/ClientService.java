@@ -1,7 +1,7 @@
 package by.edu.lesson.service.jpa;
 
-import by.edu.lesson.entity.Client;
-import by.edu.lesson.entity.Status;
+import by.edu.lesson.entity.client.Client;
+import by.edu.lesson.entity.client.Status;
 import by.edu.lesson.repository.ClientRepository;
 import by.edu.lesson.repository.jpa.ClientRepositoryImpl;
 

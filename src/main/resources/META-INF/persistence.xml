@@ -7,10 +7,10 @@
     <persistence-unit name="ClientJpa">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-
-        <class>by.edu.lesson.entity.Client</class>
+        <!--Hibernate сам собирает описание всех Entity без явного объявления его в конфиге.-->
+<!--    <class>by.edu.lesson.entity.client.Client</class>
         <class>by.edu.lesson.entity.CompanyService</class>
-        <class>by.edu.lesson.entity.Room</class>
+        <class>by.edu.lesson.entity.room.Room</class>-->
 
         <properties>
             <property name="jakarta.persistence.jdbc.driver"

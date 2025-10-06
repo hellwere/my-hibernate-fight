@@ -1,7 +1,10 @@
 package by.edu.lesson.service.hibernate;
 
-import by.edu.lesson.entity.Client;
+import by.edu.lesson.entity.client.Client;
+import by.edu.lesson.entity.client.PremiumClient;
 import by.edu.lesson.repository.hibernate.ClientRepository;
+
+import java.util.List;
 
 public class ClientService {
 
@@ -13,5 +16,9 @@ public class ClientService {
 
     public Client searchById(Long id) {
         return repository.findById(id);
+    }
+
+    public List<PremiumClient> getPremiumClients() {
+        return repository.getPremiumClients();
     }
 }

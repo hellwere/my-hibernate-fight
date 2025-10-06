@@ -1,9 +1,12 @@
 package by.edu.lesson.repository.hibernate;
 
 import by.edu.lesson.configuration.HibernateConnection;
-import by.edu.lesson.entity.Room;
+import by.edu.lesson.entity.room.Room;
+import by.edu.lesson.entity.room.SubselectRoom;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
+
+import java.util.List;
 
 public class RoomRepository {
 
@@ -46,5 +49,12 @@ public class RoomRepository {
             session.getTransaction().commit();
         }
         return room;
+    }
+
+    public List<SubselectRoom> getRoomWithMaxPeople() {
+        Session unwrap = entityManager.unwrap(Session.class);
+        try (Session session = unwrap.getSessionFactory().openSession()){
+            return session.createQuery("select s from SubselectRoom s", SubselectRoom.class).getResultList();
+        }
     }
 }

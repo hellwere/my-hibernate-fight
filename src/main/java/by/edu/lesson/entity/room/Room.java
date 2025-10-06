@@ -1,4 +1,4 @@
-package by.edu.lesson.entity;
+package by.edu.lesson.entity.room;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,15 +15,10 @@ public class Room {
     @GeneratedValue(generator = "roomSq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "roomSq", sequenceName = "room_sq", schema = "hibernate_fight", allocationSize = 1)
     private Long id;
-
     private String roomName;
-
     private String identificationNumber;
-
     private Long peopleLimit;
-
     @Enumerated(EnumType.STRING)
     private RoomStatus status;
-
     private Double amountPerHour;
 }

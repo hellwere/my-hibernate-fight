@@ -1,26 +1,15 @@
 package by.edu.lesson;
 
-import by.edu.lesson.entity.client.Address;
-import by.edu.lesson.entity.client.Client;
-import by.edu.lesson.entity.client.PremiumClient;
-import by.edu.lesson.entity.client.Status;
-import by.edu.lesson.entity.room.Room;
-import by.edu.lesson.entity.room.RoomStatus;
-import by.edu.lesson.entity.room.SubselectRoom;
-import by.edu.lesson.service.hibernate.RoomService;
-import by.edu.lesson.service.jpa.ClientService;
-
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
+import by.edu.lesson.controller.SportCentreController;
 
 public class Main {
 
     public static void main(String[] args) {
-        callExerciseSeven();
+        SportCentreController sportCentreController = new SportCentreController();
+        sportCentreController.callExerciseEight();
     }
 
-    public static void callExerciseSeven() {
+    /*public static void callExerciseSeven() {
         ClientService clientService = new ClientService();
         clientService.addClient(Arrays.asList(
                 new Client("Екотерина", "Котеевна", 18, "8-800-5553511", LocalDateTime.now(), Status.ACTIVE, 14.00,
@@ -60,7 +49,7 @@ public class Main {
     }
 
     public static void callExerciseSix() {
-        /*ClientService service = new ClientService();
+        ClientService service = new ClientService();
         Client client = service.searchById(52L);
         System.out.println(client);
 
@@ -84,11 +73,11 @@ public class Main {
         System.out.println("!----- detached room: " + newRoom);
 
         Room changedRoom = roomService.changeAmountPerHour(rooms.get(1), 9898.01);
-        System.out.println("!----- changed room: " + changedRoom);*/
-    }
+        System.out.println("!----- changed room: " + changedRoom);
+    }*/
 
-    public static void callExerciseFive() {
-        /*ClientService clientService = new ClientService();
+   /* public static void callExerciseFive() {
+        ClientService clientService = new ClientService();
         clientService.addClient(Arrays.asList(
                 new Client("Екотерина", "Котеевна", 18, "8-800-5553511",
                         LocalDateTime.now(), Status.ACTIVE, 14.00),
@@ -104,6 +93,6 @@ public class Main {
 
         List<Client> clients = clientService.getAll();
         clientService.deleteClient(clients.get(0));
-        clientService.changeClientStatus(3L, Status.BLOCKED);*/
-    }
+        clientService.changeClientStatus(3L, Status.BLOCKED);
+    }*/
 }

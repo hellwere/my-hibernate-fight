@@ -1,12 +1,11 @@
 package by.edu.lesson;
 
-import by.edu.lesson.controller.SportCentreController;
+import by.edu.lesson.controller.RoomController;
 
 public class Main {
 
     public static void main(String[] args) {
-        SportCentreController sportCentreController = new SportCentreController();
-        sportCentreController.callExerciseEight();
+        new RoomController().callExerciseNine();
     }
 
     /*public static void callExerciseSeven() {

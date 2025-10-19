@@ -61,4 +61,11 @@ public class RoomRepository {
     public Room findById(Long id) {
         return entityManager.find(Room.class, id);
     }
+
+    public List<Double> getAmountPerHour() {
+        Session unwrap = entityManager.unwrap(Session.class);
+        try (Session session = unwrap.getSessionFactory().openSession()){
+            return session.createQuery("select s.amountPerHour from Room s where s.roomName = 'Тренажёрный зал'", Double.class).getResultList();
+        }
+    }
 }

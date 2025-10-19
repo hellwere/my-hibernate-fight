@@ -8,4 +8,5 @@ public interface CustomerRepository {
     Customer addCustomer(Customer customer);
     Customer findById(Long id);
     List<Customer> findAll();
+    List<Customer> findCustomerByName(String name);
 }

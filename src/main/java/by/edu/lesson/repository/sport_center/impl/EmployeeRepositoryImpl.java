@@ -38,4 +38,25 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             return entityManager.createQuery("Select e from Employee e", Employee.class).getResultList();
         }
     }
+
+    @Override
+    public List<Employee> findEmployeeWithMaxSalary() {
+        try (EntityManager entityManager = connection.getEntityManager()) {
+            return entityManager.createQuery("Select e from Employee e where e.salary = (Select max(e.salary) from Employee e)", Employee.class).getResultList();
+        }
+    }
+
+    @Override
+    public List<Employee> findEmployeeWithMinSalary() {
+        try (EntityManager entityManager = connection.getEntityManager()) {
+            return entityManager.createQuery("Select e from Employee e where e.salary = (Select min(e.salary) from Employee e)", Employee.class).getResultList();
+        }
+    }
+
+    @Override
+    public Double countMonthSalaryExpencies() {
+        try (EntityManager entityManager = connection.getEntityManager()) {
+            return entityManager.createQuery("Select sum(e.salary) from Employee e", Double.class).getSingleResult();
+        }
+    }
 }

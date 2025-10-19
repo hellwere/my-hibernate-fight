@@ -42,4 +42,8 @@ public class RoomService {
     public Room findById(Long id) {
         return repository.findById(id);
     }
+
+    public List<Double> getAmountPerHour() {
+        return repository.getAmountPerHour();
+    }
 }

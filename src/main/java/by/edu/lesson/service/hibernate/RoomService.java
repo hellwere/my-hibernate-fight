@@ -38,4 +38,8 @@ public class RoomService {
     public List<SubselectRoom> getRoomWithMaxPeople() {
         return repository.getRoomWithMaxPeople();
     }
+
+    public Room findById(Long id) {
+        return repository.findById(id);
+    }
 }

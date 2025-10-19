@@ -57,4 +57,8 @@ public class RoomRepository {
             return session.createQuery("select s from SubselectRoom s", SubselectRoom.class).getResultList();
         }
     }
+
+    public Room findById(Long id) {
+        return entityManager.find(Room.class, id);
+    }
 }

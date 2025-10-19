@@ -4,6 +4,9 @@ import by.edu.lesson.configuration.HibernateConnection;
 import by.edu.lesson.entity.sport_center.Employee;
 import by.edu.lesson.repository.sport_center.EmployeeRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 

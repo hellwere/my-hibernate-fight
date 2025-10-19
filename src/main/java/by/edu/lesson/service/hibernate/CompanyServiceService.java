@@ -26,5 +26,8 @@ public class CompanyServiceService {
         return repository.addCompanyService(companyService);
     }
 
+    public List<CompanyService> findActivityWithCriteria(String activity) {
+        return repository.findMinAmountActivityWithCriteria(activity);
+    }
 
 }

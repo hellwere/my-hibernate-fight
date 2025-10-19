@@ -1,9 +1,12 @@
 package by.edu.lesson.repository.hibernate;
 
 import by.edu.lesson.configuration.HibernateConnection;
+import by.edu.lesson.entity.CompanyService;
 import by.edu.lesson.entity.room.Room;
 import by.edu.lesson.entity.room.SubselectRoom;
+import by.edu.lesson.entity.room.Visitor;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.*;
 import org.hibernate.Session;
 
 import java.util.List;
@@ -11,9 +14,11 @@ import java.util.List;
 public class RoomRepository {
 
     private final EntityManager entityManager;
+    private final HibernateConnection hibernateConnection;
 
     public RoomRepository() {
         this.entityManager = new HibernateConnection().getEntityManager();
+        this.hibernateConnection = new HibernateConnection();
     }
 
     public Room addRoom(Room room) {

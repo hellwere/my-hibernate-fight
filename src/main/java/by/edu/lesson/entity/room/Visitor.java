@@ -24,6 +24,7 @@ public class Visitor {
     private Long id;
     private LocalDate visitDate;
     private BigDecimal spentAmount;
+    private int age;
 
     @OneToMany(mappedBy = "visits", cascade = CascadeType.ALL)
     @ToString.Exclude

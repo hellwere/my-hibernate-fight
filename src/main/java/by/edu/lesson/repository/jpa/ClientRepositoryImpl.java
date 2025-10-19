@@ -4,6 +4,9 @@ import by.edu.lesson.configuration.HibernateConnection;
 import by.edu.lesson.entity.client.Client;
 import by.edu.lesson.repository.ClientRepository;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
@@ -54,5 +57,17 @@ public class ClientRepositoryImpl implements ClientRepository {
         entityManager.merge(client);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+
+    @Override
+    public List<Client> findClientsFromRange(int min, int max) {
+        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Client> query = cb.createQuery(Client.class);
+            Root<Client> root = query.from(Client.class);
+
+            query.select(root).where(cb.between(root.get("age"), min, max));
+            return entityManager.createQuery(query).getResultList();
+        }
     }
 }

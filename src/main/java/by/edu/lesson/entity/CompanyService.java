@@ -19,8 +19,8 @@ public class CompanyService {
     @GeneratedValue(generator = "servicesSq", strategy = GenerationType.SEQUENCE)
     private Long id;
     private String service;
-    private String amount;
+    private Double amount;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Room> rooms;
 }

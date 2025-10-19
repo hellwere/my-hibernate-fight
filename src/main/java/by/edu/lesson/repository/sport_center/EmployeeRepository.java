@@ -8,4 +8,5 @@ public interface EmployeeRepository {
     Employee addEmployee(Employee employee);
     Employee findById(Long id);
     List<Employee> findAll();
+    List<Employee> findAllWithCriteria();
 }

@@ -42,4 +42,12 @@ public class RoomService {
     public Room findById(Long id) {
         return repository.findById(id);
     }
+
+    public Long findPeopleLimitSumFromAllRoomsWithCriteria() {
+        return repository.findPeopleLimitSumFromAllRoomsWithCriteria();
+    }
+
+    public List<Room> findRoomsByPeopleAgeLimitWithCriteria(int age) {
+        return repository.findRoomsByPeopleAgeLimitWithCriteria(age);
+    }
 }

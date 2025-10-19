@@ -1,11 +1,11 @@
 package by.edu.lesson;
 
-import by.edu.lesson.controller.RoomController;
+import by.edu.lesson.controller.CriteriaBuilderController;
 
 public class Main {
 
     public static void main(String[] args) {
-        new RoomController().callExerciseNine();
+        new CriteriaBuilderController().callExTen();
     }
 
     /*public static void callExerciseSeven() {

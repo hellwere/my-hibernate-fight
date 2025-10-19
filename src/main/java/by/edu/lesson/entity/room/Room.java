@@ -3,6 +3,9 @@ package by.edu.lesson.entity.room;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -21,4 +24,9 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomStatus status;
     private Double amountPerHour;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Visitor> visits = new HashSet<>();
 }

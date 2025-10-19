@@ -34,4 +34,8 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return repository.findAll();
     }
+
+    public List<Employee> findAllWithCriteria() {
+        return repository.findAllWithCriteria();
+    }
 }

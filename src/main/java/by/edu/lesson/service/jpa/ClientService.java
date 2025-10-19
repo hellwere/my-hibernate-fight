@@ -34,4 +34,8 @@ public class ClientService {
         client.setStatus(status);
         clientRepository.changeClient(client);
     }
+
+    public List<Client> findClientsFromRange(int min, int max) {
+        return clientRepository.findClientsFromRange(min, max);
+    }
 }

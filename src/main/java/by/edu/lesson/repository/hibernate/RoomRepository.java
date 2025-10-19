@@ -67,28 +67,10 @@ public class RoomRepository {
         return entityManager.find(Room.class, id);
     }
 
-    public Long findPeopleLimitSumFromAllRoomsWithCriteria() {
-        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
-            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-            CriteriaQuery<Long> query = cb.createQuery(Long.class);
-            Root<Room> root = query.from(Room.class);
-
-            query.select(cb.sum(root.get("peopleLimit")));
-
-            return entityManager.createQuery(query).getSingleResult();
-        }
-    }
-
-    public List<Room> findRoomsByPeopleAgeLimitWithCriteria(int age) {
-        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
-            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-            CriteriaQuery<Room> query = cb.createQuery(Room.class);
-            Root<Room> root = query.from(Room.class);
-            Join<Room, Visitor> join = root.join("visits");
-
-            query.select(root).where(cb.gt(join.get("age"), age));
-
-            return entityManager.createQuery(query).getResultList();
+    public List<Double> getAmountPerHour() {
+        Session unwrap = entityManager.unwrap(Session.class);
+        try (Session session = unwrap.getSessionFactory().openSession()){
+            return session.createQuery("select s.amountPerHour from Room s where s.roomName = 'Тренажёрный зал'", Double.class).getResultList();
         }
     }
 }

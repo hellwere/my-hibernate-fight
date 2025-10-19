@@ -34,4 +34,8 @@ public class CustomerService {
     public List<Customer> findAll() {
         return repository.findAll();
     }
+
+    public List<Customer> findCustomerByName(String name) {
+        return repository.findCustomerByName(name);
+    }
 }

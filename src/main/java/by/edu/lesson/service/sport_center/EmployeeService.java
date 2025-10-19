@@ -35,7 +35,15 @@ public class EmployeeService {
         return repository.findAll();
     }
 
-    public List<Employee> findAllWithCriteria() {
-        return repository.findAllWithCriteria();
+    public List<Employee> findEmployeeWithMaxSalary() {
+        return repository.findEmployeeWithMaxSalary();
+    }
+
+    public List<Employee> findEmployeeWithMinSalary() {
+        return repository.findEmployeeWithMinSalary();
+    }
+
+    public Double countMonthSalaryExpencies() {
+        return repository.countMonthSalaryExpencies();
     }
 }

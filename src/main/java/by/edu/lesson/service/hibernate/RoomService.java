@@ -43,11 +43,7 @@ public class RoomService {
         return repository.findById(id);
     }
 
-    public Long findPeopleLimitSumFromAllRoomsWithCriteria() {
-        return repository.findPeopleLimitSumFromAllRoomsWithCriteria();
-    }
-
-    public List<Room> findRoomsByPeopleAgeLimitWithCriteria(int age) {
-        return repository.findRoomsByPeopleAgeLimitWithCriteria(age);
+    public List<Double> getAmountPerHour() {
+        return repository.getAmountPerHour();
     }
 }

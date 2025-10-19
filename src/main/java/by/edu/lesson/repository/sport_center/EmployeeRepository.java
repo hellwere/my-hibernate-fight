@@ -8,5 +8,7 @@ public interface EmployeeRepository {
     Employee addEmployee(Employee employee);
     Employee findById(Long id);
     List<Employee> findAll();
-    List<Employee> findAllWithCriteria();
+    List<Employee> findEmployeeWithMaxSalary();
+    List<Employee> findEmployeeWithMinSalary();
+    Double countMonthSalaryExpencies();
 }

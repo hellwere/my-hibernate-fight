@@ -1,11 +1,11 @@
 package by.edu.lesson;
 
-import by.edu.lesson.controller.FakeElevenController;
+import by.edu.lesson.controller.CacheExercise;
 
 public class Main {
 
     public static void main(String[] args) {
-        new FakeElevenController().callExTen();
+        new CacheExercise().callExercise();
     }
 
     /*public static void callExerciseSeven() {

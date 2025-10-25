@@ -2,13 +2,18 @@ package by.edu.lesson.repository.hibernate;
 
 import by.edu.lesson.configuration.HibernateConnection;
 import by.edu.lesson.entity.CompanyService;
+import by.edu.lesson.entity.sport_center.Employee;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
 import org.hibernate.Session;
+import org.hibernate.dialect.function.array.ArrayAggFunction;
+import org.hibernate.stat.SessionStatistics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyServiceRepository {
@@ -20,8 +25,7 @@ public class CompanyServiceRepository {
     }
 
     public CompanyService addCompanyService(CompanyService companyService) {
-        Session unwrap = hibernateConnection.getEntityManager().unwrap(Session.class);
-        try(Session session = unwrap.getSessionFactory().openSession()) {
+        try(Session session = hibernateConnection.getEntityManager().unwrap(Session.class)) {
             session.beginTransaction();
             session.merge(companyService);
             session.getTransaction().commit();
@@ -43,6 +47,48 @@ public class CompanyServiceRepository {
             query.select(root).where(cb.equal(root.get("amount"), subquery));
 
             return entityManager.createQuery(query).getResultList();
+        }
+    }
+
+    public List<CompanyService> findActivityWithCacheTwoTimes(List<Long> ids) {
+        ArrayList<CompanyService> lst = new ArrayList<>();
+        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
+            entityManager.getTransaction().begin();
+            entityManager.createQuery("Select c from CompanyService c", CompanyService.class).getResultList();
+            entityManager.createQuery("Select e from Employee e", Employee.class).getResultList();
+            entityManager.clear();
+            for (Long id : ids) {
+                lst.add(entityManager.find(CompanyService.class, id));
+            }
+            entityManager.getTransaction().commit();
+            return lst;
+        }
+    }
+
+    public List<CompanyService> findActivityWithCacheThreeTimes(List<Long> ids) {
+        ArrayList<CompanyService> lst = new ArrayList<>();
+        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
+            entityManager.getTransaction().begin();
+            entityManager.createQuery("Select c from CompanyService c", CompanyService.class).getResultList();
+            entityManager.createQuery("Select e from Employee e", Employee.class).getResultList();
+            entityManager.clear();
+            for (Long id : ids) {
+                lst.add(entityManager.find(CompanyService.class, id));
+            }
+            entityManager.getTransaction().commit();
+            return lst;
+        }
+    }
+
+    public List<CompanyService> findActivityWithCacheSecondLevel(List<Long> ids) {
+        ArrayList<CompanyService> lst = new ArrayList<>();
+        try (EntityManager entityManager = hibernateConnection.getEntityManager()) {
+            entityManager.getTransaction().begin();
+            for (Long id : ids) {
+                lst.add(entityManager.find(CompanyService.class, id));
+            }
+            entityManager.getTransaction().commit();
+            return lst;
         }
     }
 }

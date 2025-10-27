@@ -30,4 +30,16 @@ public class CompanyServiceService {
         return repository.findMinAmountActivityWithCriteria(activity);
     }
 
+    public List<CompanyService> findActivityWithCacheTwoTimes(List<Long> ids) {
+        return repository.findActivityWithCacheTwoTimes(ids);
+    }
+
+    public List<CompanyService> findActivityWithCacheThreeTimes(List<Long> ids) {
+        return repository.findActivityWithCacheThreeTimes(ids);
+    }
+
+    public List<CompanyService> findActivityWithCacheSecondLevel(List<Long> ids) {
+        return repository.findActivityWithCacheSecondLevel(ids);
+    }
+
 }
